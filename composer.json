@@ -1,0 +1,10 @@
+{
+    "name": "flexpress/component-menu",
+    "description": "Menus for WordPress",
+    "autoload": {
+        "psr-4": {
+            "FlexPress\\Components\\Menu\\": "src/FlexPress/Components/Menu/"
+        }
+    }
+
+}
