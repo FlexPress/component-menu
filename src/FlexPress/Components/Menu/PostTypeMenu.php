@@ -296,11 +296,18 @@ class PostTypeMenu implements MenuInterface
             'post_type' => $args['post_type'],
             'post_status' => 'publish',
             'meta_query' => array(
+                'relation' => 'OR',
                 array(
-                    'key' => 'fpt_page_type',
+                    'key' => 'fp_page_type',
                     'value' => 'nonmenu',
                     'compare' => '!='
+                ),
+                array(
+                    'key' => 'fp_page_type',
+                    'value' => 'nonmenu',
+                    'compare' => 'NOT EXISTS'
                 )
+
             )
 
         );
