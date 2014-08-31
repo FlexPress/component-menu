@@ -37,10 +37,10 @@ class PostTypeMenu implements MenuInterface
     public function output(array $args = array())
     {
 
-        if(get_the_ID()) {
-            $this->defaultArgs['postId'] = get_the_ID();
+        if (get_the_ID()) {
+            $this->defaultArgs['post_id'] = get_the_ID();
         }
-        
+
         $args = array_merge($this->defaultArgs, $args);
 
         if (!empty($args['sudo_items'])) {
