@@ -13,16 +13,11 @@ class PostTypeMenu implements MenuInterface
     public function __construct()
     {
 
-        $postId = 0;
-        if (isset($GLOBALS['post']->ID)) {
-            $postId = $GLOBALS['post']->ID;
-        }
-
         $this->defaultArgs = array(
 
             'starting_level' => 1,
             'post_type' => 'page',
-            'post_id' => $postId,
+            'post_id' => 0,
             'sudo_items' => array(),
             'force_current' => null,
             "recurse" => true
@@ -42,6 +37,10 @@ class PostTypeMenu implements MenuInterface
     public function output(array $args = array())
     {
 
+        if(get_the_ID()) {
+            $this->defaultArgs['postId'] = get_the_ID();
+        }
+        
         $args = array_merge($this->defaultArgs, $args);
 
         if (!empty($args['sudo_items'])) {
