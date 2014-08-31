@@ -13,11 +13,16 @@ class PostTypeMenu implements MenuInterface
     public function __construct()
     {
 
+        $postId = 0;
+        if (isset($GLOBALS['post']->ID)) {
+            $postId = $GLOBALS['post']->ID;
+        }
+
         $this->defaultArgs = array(
 
             'starting_level' => 1,
             'post_type' => 'page',
-            'post_id' => $GLOBALS['post']->ID,
+            'post_id' => $postId,
             'sudo_items' => array(),
             'force_current' => null,
             "recurse" => true
@@ -352,6 +357,12 @@ class PostTypeMenu implements MenuInterface
      */
     protected function getAncestors($args)
     {
+
+        if (!isset($args['post_id'])
+            || $args['post_id'] == 0
+        ) {
+            return array();
+        }
 
         $ancestors = get_post_ancestors($args['post_id']);
         $ancestors = array_reverse($ancestors);
