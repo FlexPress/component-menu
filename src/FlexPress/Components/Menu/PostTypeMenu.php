@@ -188,7 +188,7 @@ class PostTypeMenu implements MenuInterface
         if (in_array($page->ID, $args['ancestors'])
             || $page->ID == $args['force_current']
         ) {
-            $classes = 'class="is-current"';
+            $classes = ' class="is-current"';
         }
 
         $permalink = (property_exists($page, 'permalink')) ? $page->permalink : get_permalink($page->ID);
